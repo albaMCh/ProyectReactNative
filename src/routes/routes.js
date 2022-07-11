@@ -13,6 +13,7 @@ import ListScreen from "../screens/ListScreen";
 import LoginScreen from "../screens/LoginScreen";
 import UserComponent from "../components/User.component";
 import DetailScreen from "../screens/DetailScreen";
+import BusinessScreen from "../screens/BusinessScreen";
 
 function CustomDrawerContent(props) {
   return (
@@ -67,6 +68,7 @@ function Routes() {
           options={{ headerShown: false }}
         />
         <Stack.Screen name="Detalles" component={DetailScreen} />
+        <Stack.Screen name="Empresa" component={BusinessScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   );

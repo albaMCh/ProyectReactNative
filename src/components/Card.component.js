@@ -41,6 +41,8 @@ const CardComponent = (props) => {
                 title: props.title,
                 content: props.content,
                 imageUrl: props.imageUrl,
+                logoUrl: props.logoUrl,
+                companyInfo: props.companyInfo,
               })
             }
           ></IconButton>
