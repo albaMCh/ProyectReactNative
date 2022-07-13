@@ -31,6 +31,7 @@ const CardComponent = (props) => {
             icon={likeIcon}
             color="red"
             onPress={() => handleLikeIcon()}
+            touchSoundDisabled={undefined}
           ></IconButton>
           <IconButton
             size={20}
@@ -45,6 +46,7 @@ const CardComponent = (props) => {
                 companyInfo: props.companyInfo,
               })
             }
+            touchSoundDisabled={undefined}
           ></IconButton>
         </Card.Actions>
       </View>

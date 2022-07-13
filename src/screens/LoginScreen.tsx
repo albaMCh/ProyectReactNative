@@ -44,6 +44,7 @@ export default function LoginScreen({ navigation }) {
         autoCompleteType="email"
         textContentType="emailAddress"
         keyboardType="email-address"
+        description={undefined}
       />
       <TextInput
         label="Password"
@@ -53,13 +54,14 @@ export default function LoginScreen({ navigation }) {
         error={!!password.error}
         errorText={password.error}
         secureTextEntry
+        description={undefined}
       />
       <View style={styles.forgotPassword}>
         <TouchableOpacity onPress={() => navigation.navigate("Reset Password")}>
           <Text style={styles.forgot}>Has olvidado tu password?</Text>
         </TouchableOpacity>
       </View>
-      <Button mode="contained" onPress={onLoginPressed}>
+      <Button mode="contained" onPress={onLoginPressed} style={undefined}>
         Login
       </Button>
       <View style={styles.row}>
@@ -84,10 +86,10 @@ const styles = StyleSheet.create({
   },
   forgot: {
     fontSize: 13,
-    color: theme.colors.secondary,
+    color: theme.color.secondary,
   },
   link: {
     fontWeight: "bold",
-    color: theme.colors.primary,
+    color: theme.color.primary,
   },
 });

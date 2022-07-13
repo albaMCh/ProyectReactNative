@@ -23,7 +23,13 @@ const DetailScreen = ({ navigation, route }) => {
 
       <Text>{route.params.title}</Text>
       <Text>{route.params.content}</Text>
-      <Button onPress={() => navigation.navigate("Perfil")}>Registrarse</Button>
+      <Button
+        onPress={() => navigation.navigate("Perfil")}
+        mode={undefined}
+        style={undefined}
+      >
+        Registrarse
+      </Button>
     </View>
   );
 };

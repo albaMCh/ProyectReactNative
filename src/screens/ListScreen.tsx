@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { FlatList, StyleSheet, Text, ScrollView } from "react-native";
 import { View } from "react-native";
 import CardComponent from "../components/Card.component";
@@ -23,7 +23,7 @@ const ListScreen = ({ navigation, props }) => {
       <FlatList
         contentContainerStyle={styles.contentContainer}
         data={[listOffer]}
-        renderItem={({ item }) => (
+        renderItem={({ item }: { item: any }) => (
           <CardComponent
             companyInfo={item.company}
             title={item.Key}
@@ -33,7 +33,7 @@ const ListScreen = ({ navigation, props }) => {
             logoUrl={item.logoUrl}
           ></CardComponent>
         )}
-        showVerticalScrollIndicator={false}
+        showsVerticalScrollIndicator={false}
       />
     </View>
   );

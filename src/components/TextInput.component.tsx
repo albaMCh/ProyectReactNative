@@ -5,9 +5,9 @@ import { theme } from "../core/theme";
 
 export default function TextInput({ errorText, description, ...props }) {
   return (
-    <View style={StyleSheet.container}>
+    <View style={styles.container}>
       <Input
-        style={StyleSheet.input}
+        style={styles.input}
         selectionColor={theme.color.primary}
         underlineColor="transparent"
         mode="outlined"
@@ -16,7 +16,7 @@ export default function TextInput({ errorText, description, ...props }) {
       {description && !errorText ? (
         <Text style={styles.description}>{description}</Text>
       ) : null}
-      {errorText ? <Text style={StyleSheet.error}>{errorText}</Text> : null}
+      {errorText ? <Text style={styles.error}>{errorText}</Text> : null}
     </View>
   );
 }
@@ -31,12 +31,12 @@ const styles = StyleSheet.create({
   },
   description: {
     fontSize: 13,
-    color: theme.colors.secondary,
+    color: theme.color.secondary,
     paddingTop: 8,
   },
   error: {
     fontSize: 13,
-    color: theme.colors.error,
+    color: theme.color.error,
     paddingTop: 8,
   },
 });
