@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { FlatList, StyleSheet, Text, ScrollView } from "react-native";
 import { View } from "react-native";
 import CardComponent from "../components/Card.component";
+import { IOferta } from "../interface/IOferta.interface";
 import OfertaDataService from "../services/OfertaDataService";
 
 const styles = StyleSheet.create({
@@ -11,32 +12,41 @@ const styles = StyleSheet.create({
   },
 });
 const ListScreen = ({ navigation, props }) => {
-  const [listOffer, setListOffer] = useState({});
+  const [listOffer, setListOffer] = useState([]);
 
   useEffect(() => {
     OfertaDataService.getAll().then((data) => {
       setListOffer(data);
     });
   }, []);
-  return (
-    <View>
-      <FlatList
-        contentContainerStyle={styles.contentContainer}
-        data={[listOffer]}
-        renderItem={({ item }: { item: any }) => (
-          <CardComponent
-            companyInfo={item.company}
-            title={item.Key}
-            content={item.content}
-            imageUrl="https://picsum.photos/700"
-            navigation={navigation}
-            logoUrl={item.logoUrl}
-          ></CardComponent>
-        )}
-        showsVerticalScrollIndicator={false}
-      />
-    </View>
-  );
+
+  if (listOffer.length > 0) {
+    return (
+      <View>
+        <FlatList
+          contentContainerStyle={styles.contentContainer}
+          data={listOffer}
+          renderItem={({ item }: { item: IOferta }) => (
+            <CardComponent
+              id={item.id}
+              companyInfo={item.empresa}
+              title={item.nombre}
+              content={item.descripcion}
+              navigation={navigation}
+              logoUrl={item.empresa.imagen}
+            ></CardComponent>
+          )}
+          showsVerticalScrollIndicator={false}
+        />
+      </View>
+    );
+  } else {
+    return (
+      <View>
+        <Text>Cargando...</Text>
+      </View>
+    );
+  }
 };
 
 export default ListScreen;

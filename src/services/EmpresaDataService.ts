@@ -3,17 +3,17 @@ import axios from "../../axios.config";
 class EmpresaDataService {
   getAll(queryParams) {
     return axios
-      .get("/ Empresas", {
+      .get("/empresas", {
         params: queryParams,
       })
       .then((response) => {
-        return <Array<IEmpresa>>response.data;
+        return <Array<IEmpresa>>response.data.data.data;
       });
   }
 
   get(id) {
-    return axios.get("/empresas/${id}").then((response) => {
-      return <IEmpresa>response.data;
+    return axios.get(`/empresas/${id}`).then((response) => {
+      return <IEmpresa>response.data.data;
     });
   }
 }

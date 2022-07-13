@@ -3,7 +3,7 @@ import { StyleSheet } from "react-native";
 import { Button as PaperButton } from "react-native-paper";
 import { theme } from "../core/theme";
 
-export default function Buttton({ mode, style, ...props }) {
+export default function Buttton({ mode, style, children, ...props }) {
   return (
     <PaperButton
       style={[
@@ -14,7 +14,9 @@ export default function Buttton({ mode, style, ...props }) {
       labelStyle={styles.text}
       mode={mode}
       {...props}
-    />
+    >
+      {children}
+    </PaperButton>
   );
 }
 

@@ -14,7 +14,7 @@ const CardComponent = (props) => {
   };
   return (
     <Card elevation={5} style={{ marginVertical: 10, marginHorizontal: 10 }}>
-      <Card.Cover source={{ uri: props.imageUrl }} />
+      {/*<Card.Cover source={{ uri: props.imageUrl }} />*/}
       <View
         style={{
           flexDirection: "row",
@@ -39,11 +39,7 @@ const CardComponent = (props) => {
             color="gray"
             onPress={() =>
               props.navigation.navigate("Detalles", {
-                title: props.title,
-                content: props.content,
-                imageUrl: props.imageUrl,
-                logoUrl: props.logoUrl,
-                companyInfo: props.companyInfo,
+                id: props.id,
               })
             }
             touchSoundDisabled={undefined}

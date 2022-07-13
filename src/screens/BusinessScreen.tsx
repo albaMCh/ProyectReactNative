@@ -1,15 +1,33 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { FlatList, StyleSheet, Text, ScrollView } from "react-native";
 import { View, Image } from "react-native";
 import Button from "../components/Button.component";
+import { IEmpresa } from "../interface/IEmpresa.interface";
+import EmpresaDataService from "../services/EmpresaDataService";
 
 const BusinessScreen = ({ navigation, route }) => {
+  const [business, setBusiness] = useState<IEmpresa | undefined>(null);
+
+  useEffect(() => {
+    EmpresaDataService.get(route.params.id).then((data) => {
+      setBusiness(data);
+    });
+  }, []);
+
+  if (business) {
+    return (
+      <View>
+        {/*<Image source={business.imagen?.url} style={styles.logo}></Image>*/}
+        <Text>{business.nombre}</Text>
+        <Text>{business.descripcion}</Text>
+        <Text>{business.ubicacion}</Text>
+      </View>
+    );
+  }
+
   return (
     <View>
-      <Image source={route.params.logoUrl} style={styles.logo}></Image>
-      <Text>{route.params.companyInfo.name}</Text>
-      <Text>{route.params.companyInfo.description}</Text>
-      <Text>{route.params.companyInfo.ubicacion}</Text>
+      <Text>Cargando..</Text>
     </View>
   );
 };

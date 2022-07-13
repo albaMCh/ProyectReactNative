@@ -47,6 +47,7 @@ export enum TipoEstado {
 }
 
 export interface IOferta {
+  id: string;
   nombre: string;
   descripcion: string;
   ubicacion: string;
