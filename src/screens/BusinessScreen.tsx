@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { FlatList, StyleSheet, Text, ScrollView } from "react-native";
-import { View, Image } from "react-native";
+import { View, Image, Linking } from "react-native";
+import { Badge } from "react-native-paper";
 import Button from "../components/Button.component";
 import { IEmpresa } from "../interface/IEmpresa.interface";
 import EmpresaDataService from "../services/EmpresaDataService";
@@ -18,9 +19,19 @@ const BusinessScreen = ({ navigation, route }) => {
     return (
       <View>
         {/*<Image source={business.imagen?.url} style={styles.logo}></Image>*/}
-        <Text>{business.nombre}</Text>
-        <Text>{business.descripcion}</Text>
-        <Text>{business.ubicacion}</Text>
+
+        <Text style={styles.businessNombre}>{business.nombre}</Text>
+        <Text style={styles.businessDescripcion}>{business.descripcion}</Text>
+        <Text style={styles.businessUbicacion}>
+          Ubicación: {business.ubicacion}
+        </Text>
+
+        <Text
+          style={styles.businessUrl}
+          onPress={() => Linking.openURL(business.url)}
+        >
+          {business.url}
+        </Text>
       </View>
     );
   }
@@ -42,6 +53,35 @@ const styles = StyleSheet.create({
     width: 60,
     height: 60,
     marginBottom: 8,
+  },
+  businessNombre: {
+    fontSize: 24,
+    fontWeight: "bold",
+    marginBottom: 15,
+    padding: 5,
+  },
+  businessDescripcion: {
+    fontSize: 12,
+    marginBottom: 15,
+    backgroundColor: "#fff",
+    borderRadius: 12,
+    padding: 10,
+  },
+  businessUbicacion: {
+    fontSize: 12,
+    marginBottom: 15,
+    backgroundColor: "#61D5BA",
+    borderRadius: 12,
+    padding: 10,
+    width: 180,
+  },
+  businessUrl: {
+    fontSize: 12,
+    marginBottom: 15,
+    backgroundColor: "#61D5BA",
+    borderRadius: 12,
+    padding: 10,
+    width: 180,
   },
 });
 

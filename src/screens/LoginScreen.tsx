@@ -90,6 +90,5 @@ const styles = StyleSheet.create({
   },
   link: {
     fontWeight: "bold",
-    color: theme.color.primary,
   },
 });
